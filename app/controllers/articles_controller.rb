@@ -12,8 +12,8 @@ class ArticlesController < ApplicationController
   end
  
   def edit
-    @article = Article.find(params[:id])
-    @user = @article.user
+    @user = User.find(params[:user_id])
+    @article = @user.articles.find(params[:id])
   end
    
   def create
@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     @article = @user.articles.create(article_params)
 
     if @article.save
-      redirect_to user_path(@user)
+      redirect_to user_article_path(@user, @article)
     else
       render 'new'
     end
@@ -30,12 +30,7 @@ class ArticlesController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @article = @user.articles.update(article_params)
-               
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render 'edit'
-    end
+    redirect_to user_article_path(@user, @article)           
   end
          
   def destroy
