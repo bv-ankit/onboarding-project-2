@@ -1,0 +1,14 @@
+<p>
+  <strong>Email id of current user:</strong>
+  <%= @user.email %>
+</p><br />
+
+<%= link_to 'Show Article Dashboard', user_articles_url(@user) %><br />
+
+<h3>Create a new article:</h3>
+<%= render  "articles/form" %><br />
+
+<h3>My Articles List:</h3>
+
+<%= render  @user.articles %><br />
+
