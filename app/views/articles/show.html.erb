@@ -7,8 +7,12 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p><br />
-
+<p>
 <%= link_to 'Edit', edit_user_article_path(@article, :user_id => params[:user_id]) %>
 <%= link_to  "Delete", [@article.user, @article], 
     method: :delete, 
     data: { confirm: 'Are you sure?' } %>
+</p>
+<p>
+<%= link_to 'My Article Dashboard', user_articles_path(:user_id => params[:user_id]) %>
+</p>
