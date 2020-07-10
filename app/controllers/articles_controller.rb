@@ -40,6 +40,10 @@ class ArticlesController < ApplicationController
                
     redirect_to user_path(@user)
   end
+
+  def feed
+    @article = Article.all
+  end
            
   private
 
