@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
-  get '/signup' => 'users#new'
-  # get '/signout' => 'users#signout'
   post '/signin' => 'sessions#create'
+  get '/signup' => 'users#new'
   delete '/signout' => 'sessions#destroy'
 
   resources :users do
@@ -10,7 +9,4 @@ Rails.application.routes.draw do
   end
 
   root 'articles#feed'
-  
-  post '/sessions' => 'sessions#create'
-
 end

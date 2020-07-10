@@ -1,2 +1,2 @@
 # onboarding-project-2
-Todo App built using Ruby on Rails
+Blog App built using Ruby on Rails
