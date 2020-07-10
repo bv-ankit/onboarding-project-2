@@ -21,16 +21,21 @@
  
   <p>
     <%= form.label :email %><br>
-    <%= form.text_field :email %>
+    <%= form.email_field :email %>
   </p>
  
   <p>
     <%= form.label :password %><br>
-    <%= form.text_field :password_digest %>
+    <%= form.password_field :password %>
+  </p>
+  
+  <p>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation %>
   </p>
  
   <p>
-    <%= form.submit %>
+    <%= form.submit "Create Account" %>
   </p>
  
 <% end %>
