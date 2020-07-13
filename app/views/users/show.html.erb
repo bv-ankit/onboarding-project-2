@@ -1,21 +1,16 @@
 <%= render 'articles/navbar' %>
-<p>
-  <strong>Email id of current user:</strong>
-  <%= @user.email %>
-</p><br />
-<% if signed_in? %>
-  <%= link_to "Feed", root_url %>
-  <%= link_to "Profile", current_user %>
-  <%= link_to "Log out", signout_path, method: :delete %> <br />
-  <%= link_to 'My Articles Dashboard', user_articles_url(@user) %><br />
-<% else %>
-  <li><%= link_to "Log in", signin_path %></li>
-<% end %>
+<div>
+  <p>
+    <strong>My Email id:</strong> <%= @user.email %>
+  </p>
+  <p>
+    <strong>My Username:</strong> <%= @user.username %>
+  </p>
+</div>
 
-<h3>Create a new article:</h3>
-<%= render  "articles/form" %><br />
-
-<h3>My Articles List:</h3>
-<ol>
-<%= render  @user.articles %><br />
-</ol>
+<div>
+  <h3>My Articles List:</h3>
+  <ol>
+    <%= render  @user.articles %><br />
+  </ol>
+</div>

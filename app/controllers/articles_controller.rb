@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
     @user = User.find(params[:user_id])
     @article = @user.articles.find(params[:id])
     if @user && @article 
-      @article = @article.update_attributes(article_params)
+      @article.update_attributes(article_params)
       redirect_to user_article_path(@user, @article)
     else
       render 'edit'
