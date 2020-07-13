@@ -6,6 +6,13 @@
     <title>Article Feed</title>
 </head>
 <body>
+    <% if signed_in? %>
+        <%= link_to "Profile", current_user %>
+        <%= link_to "Log out", signout_path, method: :delete %> <br />
+        <%= link_to 'My Articles Dashboard', user_articles_url(current_user) %><br />
+    <% else %>
+        <li><%= link_to "Log in", signin_path %></li>
+    <% end %>
     <div id="article-list">
         <% @article.each do |article| %>
             <div id="article_title">
