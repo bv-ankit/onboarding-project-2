@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :signed_in_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -25,15 +25,15 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:username,
-                                  :email,
-                                  :password,
-                                  :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:username,
+                                 :email,
+                                 :password,
+                                 :password_confirmation)
+  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 end

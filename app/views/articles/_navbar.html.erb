@@ -1,5 +1,6 @@
 <div>
     <% if signed_in? %>
+        <%= link_to "Home Page", root_path %>
         <%= link_to "Create new Article", new_user_article_path(current_user) %>
         <%= link_to "My Profile", current_user %>
         <%= link_to 'My Articles Dashboard', user_articles_url(current_user) %>

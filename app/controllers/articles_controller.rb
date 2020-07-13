@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :signed_in_user, only: [:create, :edit, :update, :destroy, :index, :new]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:create, :index, :new]
+  before_action :correct_user_edit, only: [:edit, :update, :destroy]
 
   def index
     @user = User.find(params[:user_id])
@@ -60,11 +61,13 @@ class ArticlesController < ApplicationController
   end
 
   def correct_user
-    if current_user?(User.find_by(id: params[:id]))
-      @article = current_user.articles.find_by(id: params[:id])
-      redirect_to root_url if @article.nil?
-    else
-      redirect_to root_url
-    end
+    redirect_to root_path unless current_user?(User.find(params[:user_id]))
+    @article = current_user.articles.find_by(id: params[:id])
+  end
+
+  def correct_user_edit
+    correct_user
+    @article = current_user.articles.find_by(id: params[:id])
+    redirect_to root_path if @article.nil?
   end
 end
