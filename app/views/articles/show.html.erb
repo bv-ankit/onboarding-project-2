@@ -1,25 +1,22 @@
 <%= render 'navbar' %>
 
 <div>
-  <h1>
-    Title: <%= @article.title %>
-  </h1>
-  
-  <p>
-    <strong>Body:</strong>
-    <%= @article.text %>
-  </p>
+    <h1>
+        Title: <%= @article.title %>
+    </h1>
+
+    <p>
+        <strong>Body:</strong>
+        <%= @article.text %>
+    </p>
 </div>
 <div>
-  <% if signed_in? %>
+    <% if signed_in? && current_user?(User.find(params[:user_id])) %>
     <p>
-      <%= link_to 'Edit', edit_user_article_path(@article, :user_id => params[:user_id]) %>
-      <%= link_to  "Delete", [@article.user, @article], 
+        <%= link_to 'Edit', edit_user_article_path(@article, :user_id => params[:user_id]) %>
+        <%= link_to  "Delete", [@article.user, @article], 
           method: :delete, 
           data: { confirm: 'Are you sure?' } %>
     </p>
-    <p>
-      <%= link_to 'My Article Dashboard', user_articles_path(:user_id => params[:user_id]) %>
-    </p>
-  <% end %>
+    <% end %>
 </div>

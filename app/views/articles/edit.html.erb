@@ -1,39 +1,39 @@
 <%= render 'navbar' %>
 
 <div>
-  <h1>Edit Article</h1>
-  
-  <%= form_with model: [@user, @article] , local: true do |form| %>
-  
+    <h1>Edit Article</h1>
+
+    <%= form_with model: [@user, @article] , local: true do |form| %>
+
     <% if @user.errors.any? %>
-      <div id="error_explanation">
+    <div id="error_explanation">
         <h2>
-          <%= pluralize(@user.errors.count, "error") %> prohibited 
-          this article from being saved:
+            <%= pluralize(@user.errors.count, "error") %> prohibited
+            this article from being saved:
         </h2>
         <ul>
-          <% @user.errors.full_messages.each do |msg| %>
+            <% @user.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
-          <% end %>
+            <% end %>
         </ul>
-      </div>
+    </div>
     <% end %>
-  
+
     <p>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
+        <%= form.label :title %><br>
+        <%= form.text_field :title %>
     </p>
-  
+
     <p>
-      <%= form.label :text %><br>
-      <%= form.text_area :text %>
+        <%= form.label :text %><br>
+        <%= form.text_area :text %>
     </p>
-  
+
     <p>
-      <%= form.submit %>
+        <%= form.submit %>
     </p>
-  
-  <% end %>
-  
-  <%= link_to 'Back', user_articles_path %>
+
+    <% end %>
+
+    <%= link_to 'Back', user_articles_path %>
 </div>
