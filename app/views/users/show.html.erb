@@ -1,3 +1,4 @@
+<%= render 'articles/navbar' %>
 <p>
   <strong>Email id of current user:</strong>
   <%= @user.email %>
@@ -15,6 +16,6 @@
 <%= render  "articles/form" %><br />
 
 <h3>My Articles List:</h3>
-
+<ol>
 <%= render  @user.articles %><br />
-
+</ol>

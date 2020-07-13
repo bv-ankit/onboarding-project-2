@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :signed_in_user, only: [:create, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:create, :edit, :update, :destroy, :index, :new]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -60,7 +60,11 @@ class ArticlesController < ApplicationController
   end
 
   def correct_user
-    @article = current_user.articles.find_by(id: params[:id])
-    redirect_to root_url if @article.nil?
+    if current_user?(User.find_by(id: params[:id]))
+      @article = current_user.articles.find_by(id: params[:id])
+      redirect_to root_url if @article.nil?
+    else
+      redirect_to root_url
+    end
   end
 end

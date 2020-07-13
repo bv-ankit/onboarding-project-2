@@ -1,0 +1,9 @@
+<% if signed_in? %>
+    <%= link_to "Create new Article", new_user_article_path(current_user) %>
+    <%= link_to "My Profile", current_user %>
+    <%= link_to 'My Articles Dashboard', user_articles_url(current_user) %>
+    <%= link_to "Sign out", signout_path, method: :delete %> <br />
+<% else %>
+    <%= link_to "Sign in", signin_path %>
+    <%= link_to "Sign up", signup_path %> <br />
+<% end %>

@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Feed</title>
 </head>
+
 <body>
-    <% if signed_in? %>
-        <%= link_to "Profile", current_user %>
-        <%= link_to "Log out", signout_path, method: :delete %> <br />
-        <%= link_to 'My Articles Dashboard', user_articles_url(current_user) %><br />
-    <% else %>
-        <li><%= link_to "Log in", signin_path %></li>
-    <% end %>
+    <%= render 'navbar' %>
+    <h1>Articles Feed</h1>
     <div id="article-list">
-        <% @article.each do |article| %>
-            <div id="article_title">
-                <p>
-                    <b>Title:</b> <%= article.title %>
-                </p>
-            </div>
-            <div id="article_body">
-                <p>
-                    <b>Body:</b> <%= article.text %>
-                </p>
-            </div>
-        <% end %>
+        <ol>
+            <% @article.each do |article| %>
+            <li>
+                <div id="article_title">
+                    <p>
+                        <b>Title:</b> <%= article.title %>
+                    </p>
+                </div>
+                <div id="article_body">
+                    <p>
+                        <b>Body:</b> <%= article.text %>
+                    </p>
+                </div>
+            </li>
+            <% end %>
+        </ol>
     </div>
 </body>
+
 </html>

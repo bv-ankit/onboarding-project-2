@@ -1,7 +1,9 @@
-<% if article.title %>
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-    <%= link_to 'Show Article', [article.user, article] %>
-  </p>
-<% end %>
+<li>
+    <% if article.title %>
+    <p>
+        <strong>Title:</strong>
+        <%= article.title %>
+        <%= link_to 'Show Article', [article.user, article] %>
+    </p>
+    <% end %>
+</li>
