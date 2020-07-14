@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to user_article_path(@user, @article)
     else
+      flash.now[:danger] = "ERROR: Minimum length of title is 4 char & body is 10 char."
       render "new"
     end
   end
@@ -35,9 +36,14 @@ class ArticlesController < ApplicationController
     @user = User.find(params[:user_id])
     @article = @user.articles.find(params[:id])
     if @user && @article
-      @article.update_attributes(article_params)
-      redirect_to user_article_path(@user, @article)
+      if @article.update_attributes(article_params)
+        redirect_to user_article_path(@user, @article)
+      else
+        flash.now[:danger] = "ERROR: Minimum length of title is 4 char & body is 10 char."
+        render "edit"
+      end
     else
+      flash.now[:danger] = "Article not found."
       render "edit"
     end
   end

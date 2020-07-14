@@ -3,15 +3,7 @@
     <h1>Log in</h1>
 
     <div>
-        <div>
-            <% flash.each do |type, msg| %>
-            <div>
-                <%= msg %>
-            </div>
-            <% end %>
-            <br />
-        </div>
-
+        <%= render 'articles/error' %>
         <div>
             <%= form_for(:session, url: signin_path) do |f| %>
             <%= f.label :email %>
