@@ -1,27 +1,35 @@
 <% provide(:title, "Log in") %>
 <div>
-  <h1>Log in</h1>
+    <h1>Log in</h1>
 
-  <div>
     <div>
-      <%= form_for(:session, url: signin_path) do |f| %>
+        <div>
+            <% flash.each do |type, msg| %>
+            <div>
+                <%= msg %>
+            </div>
+            <% end %>
+            <br />
+        </div>
 
-        <%= f.label :email %>
-        <%= f.email_field :email %>
+        <div>
+            <%= form_for(:session, url: signin_path) do |f| %>
+            <%= f.label :email %>
+            <%= f.email_field :email %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
 
-        <%= f.submit "Log in" %>
-        
-        <%= f.label :remember_me do %>
-          <%= f.check_box :remember_me %>
-          <span>Remember me on this computer</span>
-        <% end %>
+            <%= f.submit "Log in" %>
 
-      <% end %>
+            <%= f.label :remember_me do %>
+            <%= f.check_box :remember_me %>
+            <span>Remember me on this computer</span>
+            <% end %>
 
-      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+            <% end %>
+
+            <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+        </div>
     </div>
-  </div>
 </div>
