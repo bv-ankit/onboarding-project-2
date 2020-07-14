@@ -13,10 +13,11 @@
     <div id="article-list">
         <ol>
             <% @article.each do |article| %>
+            <% if article.user_id %>
             <li>
                 <div id="article_title">
                     <p>
-                        <b>Title:</b> <%= article.title %>
+                        <b>Title:</b> <%= link_to article.title, user_article_path(user_id: article.user_id, id: article.id) %>
                     </p>
                 </div>
                 <div id="article_body">
@@ -25,6 +26,7 @@
                     </p>
                 </div>
             </li>
+            <% end %>
             <% end %>
         </ol>
     </div>
